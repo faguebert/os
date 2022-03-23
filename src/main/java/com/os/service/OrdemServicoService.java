@@ -1,5 +1,6 @@
 package com.os.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,6 +61,10 @@ public class OrdemServicoService {
 		
 		ordemServico.setTecnico(tecnico);
 		ordemServico.setCliente(cliente);
+		
+		if(ordemServico.getStatus().getCod().equals(2)) {
+			ordemServico.setDataFechamento(LocalDateTime.now());
+		}
 		
 		return ordemServicoRepository.save(ordemServico);
 	}
